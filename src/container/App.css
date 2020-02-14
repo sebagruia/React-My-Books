@@ -113,6 +113,12 @@ body, .app {
   outline: none;
 }
 
+.search-display{
+  font-size:20px;
+  font-weight: lighter;
+  font-style:italic;
+}
+
 button:active {
   border: red;
   outline: none;
@@ -187,8 +193,15 @@ button:active {
 /* book cover */
 
 .book-cover {
+  position:relative;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   background: #eee;
+}
+
+.no-book-cover{
+  position:absolute;
+  left: 13%;
+  top: 25%;
 }
 
 .book-cover-title {

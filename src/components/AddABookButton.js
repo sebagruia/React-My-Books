@@ -1,8 +1,8 @@
 import React from 'react';
-import '../../container/App.css';
+import '../container/App.css';
 import {Link} from 'react-router-dom';
  
-const AddABook = ()=>{
+const AddABookButton = ()=>{
     return(
         <div className="open-search">
               <Link className="add-a-book-link" role="button" to="/search" >Add a book</Link>
@@ -10,4 +10,4 @@ const AddABook = ()=>{
     );
 }
 
-export default AddABook;
+export default AddABookButton;
