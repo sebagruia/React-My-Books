@@ -1,14 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../container/App.css';
 import * as BooksAPI from '../BooksAPI';
 
-const Book = ({id, title, author, preview}) => {
-    const [selected, setSelected] = useState('');
+const Book = ({book, title, author, preview, shelf}) => {
 
-    const handleSelect = (event) => {
-        setSelected(event.target.value);
-        console.log(event.target.value);
-        BooksAPI.update(id, event.target.value);
+    const changeShelf = (event) => {
+        BooksAPI.update(book, event.target.value);
     }
     
     return (
@@ -23,7 +20,7 @@ const Book = ({id, title, author, preview}) => {
                         </div>
                     }
                     <div className="book-shelf-changer">
-                        <select value={selected} onChange={(event) => handleSelect(event)}>
+                        <select value={shelf} onChange={(event) => changeShelf(event)}>
                             <option value="move" disabled>Move to...</option>
                             <option value="currentlyReading">Currently Reading</option>
                             <option value="wantToRead">Want to Read</option>

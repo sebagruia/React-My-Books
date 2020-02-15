@@ -16,23 +16,23 @@ class SearchBooks extends Component {
 
 
     search = (event) => {
-        this.setState({query:event.target.value});
+        this.setState({ query: event.target.value });
         if (event.target.value !== "") {
             BooksAPI.search(event.target.value)
                 .then((books) => {
-                    if(!Array.isArray(books)){
+                    if (!Array.isArray(books)) {
                         this.setState({ searchedBooks: [] });
                     }
-                    else{
+                    else {
                         this.setState({ searchedBooks: books });
                     }
-                    
+
                 })
                 .catch((err) => {
                     console.error('Unable to fetch searched Books', err);
                 })
         }
-        else{
+        else {
             this.setState({ searchedBooks: [] });
         }
     }
@@ -59,10 +59,11 @@ class SearchBooks extends Component {
                 <div className="search-books-results">
                     <ol className="books-grid">
                         {
-                                this.state.query === "" || this.state.searchedBooks.length === 0 ? 
-                                 <h4 className="search-display">Searching for {`"${this.state.query}"`}</h4>
-                                :this.state.searchedBooks.map((book) =>
+                            this.state.query === "" || this.state.searchedBooks.length === 0 ?
+                                <h4 className="search-display">Searching for {`"${this.state.query}"`}</h4>
+                                : this.state.searchedBooks.map((book) =>
                                     <Book key={book.id}
+                                        book={book}
                                         id={book.id}
                                         title={book.title}
                                         author={book.authors}

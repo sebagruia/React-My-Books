@@ -14,8 +14,6 @@ class App extends Component {
       read: [],
       currentlyReading: [],
       wantToRead: []
-
-
     }
   }
 
@@ -73,6 +71,7 @@ class App extends Component {
                         this.state.currentlyReading.map((book) =>
 
                           (<Book key={book.id}
+                            book={book}
                             id={book.id}
                             title={book.title}
                             author={book.authors}
@@ -91,6 +90,7 @@ class App extends Component {
                         this.state.wantToRead.map((book) =>
 
                           (<Book key={book.id}
+                            book={book}
                             id={book.id}
                             title={book.title}
                             author={book.authors}
@@ -109,6 +109,7 @@ class App extends Component {
                         this.state.read.map((book) =>
 
                           (<Book key={book.id}
+                            book={book}
                             id={book.id}
                             title={book.title}
                             author={book.authors}
@@ -123,13 +124,7 @@ class App extends Component {
             </div>
             <AddABookButton />
           </div>
-
-
-
         )} />
-
-
-
       </div>
     )
   }
