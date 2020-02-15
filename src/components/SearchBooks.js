@@ -14,10 +14,6 @@ class SearchBooks extends Component {
         }
     }
 
-    // handleInput = (event) => {
-    //     this.setState({ query: event.target.value });
-
-    // }
 
     search = (event) => {
         this.setState({query:event.target.value});
@@ -43,7 +39,6 @@ class SearchBooks extends Component {
 
 
     render() {
-        // this.search(this.state.query);
 
         return (
             <div className="search-books">
@@ -68,6 +63,7 @@ class SearchBooks extends Component {
                                  <h4 className="search-display">Searching for {`"${this.state.query}"`}</h4>
                                 :this.state.searchedBooks.map((book) =>
                                     <Book key={book.id}
+                                        id={book.id}
                                         title={book.title}
                                         author={book.authors}
                                         preview={book.imageLinks} />

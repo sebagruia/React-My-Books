@@ -3,15 +3,19 @@ import * as BooksAPI from '../BooksAPI';
 import '../container/App.css';
 import AddABookButton from '../components/AddABookButton';
 import { Route } from 'react-router-dom';
-import Book from '../components/Book';
 import SearchBooks from '../components/SearchBooks';
+import Book from '../components/Book';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
       books: [],
-      bookStatus: ''
+      read: [],
+      currentlyReading: [],
+      wantToRead: []
+
+
     }
   }
 
@@ -20,16 +24,38 @@ class App extends Component {
       .then((books) => {
         console.log(books);
         this.setState({ books: books });
+        this.filterBooksByShelf(books);
       })
+
+  }
+
+
+  filterBooksByShelf = (books) => {
+    books.forEach((book) => {
+      if (book.shelf === "currentlyReading" && !this.state.currentlyReading.includes(book.id)) {
+        this.setState({ currentlyReading: [...this.state.currentlyReading, book] });
+      }
+      else if (book.shelf === "wantToRead" && !this.state.wantToRead.includes(book.id)) {
+        this.setState({ wantToRead: [...this.state.wantToRead, book] });
+      }
+      else if (book.shelf === "read" && !this.state.read.includes(book.id)) {
+        this.setState({ read: [...this.state.read, book] });
+      }
+
+    })
+    console.log(this.state.read);
+    console.log(this.state.currentlyReading);
+    console.log(this.state.wantToRead);
   }
 
 
   render() {
+
     return (
       <div className="app">
 
         <Route exact path="/search" render={() =>
-          <SearchBooks books = {this.state.books}/>
+          <SearchBooks books={this.state.books} />
         } />
 
         <Route exact path="/" render={() => (
@@ -43,7 +69,17 @@ class App extends Component {
                   <h2 className="bookshelf-title">Currently Reading</h2>
                   <div className="bookshelf-books">
                     <ol className="books-grid">
-                      <Book />
+                      {
+                        this.state.currentlyReading.map((book) =>
+
+                          (<Book key={book.id}
+                            id={book.id}
+                            title={book.title}
+                            author={book.authors}
+                            preview={book.imageLinks}
+                            shelf={book.shelf} />)
+                        )
+                      }
                     </ol>
                   </div>
                 </div>
@@ -51,42 +87,17 @@ class App extends Component {
                   <h2 className="bookshelf-title">Want to Read</h2>
                   <div className="bookshelf-books">
                     <ol className="books-grid">
-                      <li>
-                        <div className="book">
-                          <div className="book-top">
-                            <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: 'url("http://books.google.com/books/content?id=uu1mC6zWNTwC&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE73pGHfBNSsJG9Y8kRBpmLUft9O4BfItHioHolWNKOdLavw-SLcXADy3CPAfJ0_qMb18RmCa7Ds1cTdpM3dxAGJs8zfCfm8c6ggBIjzKT7XR5FIB53HHOhnsT7a0Cc-PpneWq9zX&source=gbs_api")' }}></div>
-                            <div className="book-shelf-changer">
-                              <select>
-                                <option value="move" disabled>Move to...</option>
-                                <option value="currentlyReading">Currently Reading</option>
-                                <option value="wantToRead">Want to Read</option>
-                                <option value="read">Read</option>
-                                <option value="none">None</option>
-                              </select>
-                            </div>
-                          </div>
-                          <div className="book-title">1776</div>
-                          <div className="book-authors">David McCullough</div>
-                        </div>
-                      </li>
-                      <li>
-                        <div className="book">
-                          <div className="book-top">
-                            <div className="book-cover" style={{ width: 128, height: 192, backgroundImage: 'url("http://books.google.com/books/content?id=wrOQLV6xB-wC&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE72G3gA5A-Ka8XjOZGDFLAoUeMQBqZ9y-LCspZ2dzJTugcOcJ4C7FP0tDA8s1h9f480ISXuvYhA_ZpdvRArUL-mZyD4WW7CHyEqHYq9D3kGnrZCNiqxSRhry8TiFDCMWP61ujflB&source=gbs_api")' }}></div>
-                            <div className="book-shelf-changer">
-                              <select>
-                                <option value="move" disabled>Move to...</option>
-                                <option value="currentlyReading">Currently Reading</option>
-                                <option value="wantToRead">Want to Read</option>
-                                <option value="read">Read</option>
-                                <option value="none">None</option>
-                              </select>
-                            </div>
-                          </div>
-                          <div className="book-title">Harry Potter and the Sorcerer's Stone</div>
-                          <div className="book-authors">J.K. Rowling</div>
-                        </div>
-                      </li>
+                      {
+                        this.state.wantToRead.map((book) =>
+
+                          (<Book key={book.id}
+                            id={book.id}
+                            title={book.title}
+                            author={book.authors}
+                            preview={book.imageLinks}
+                            shelf={book.shelf} />)
+                        )
+                      }
                     </ol>
                   </div>
                 </div>
@@ -94,60 +105,17 @@ class App extends Component {
                   <h2 className="bookshelf-title">Read</h2>
                   <div className="bookshelf-books">
                     <ol className="books-grid">
-                      <li>
-                        <div className="book">
-                          <div className="book-top">
-                            <div className="book-cover" style={{ width: 128, height: 192, backgroundImage: 'url("http://books.google.com/books/content?id=pD6arNyKyi8C&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE70Rw0CCwNZh0SsYpQTkMbvz23npqWeUoJvVbi_gXla2m2ie_ReMWPl0xoU8Quy9fk0Zhb3szmwe8cTe4k7DAbfQ45FEzr9T7Lk0XhVpEPBvwUAztOBJ6Y0QPZylo4VbB7K5iRSk&source=gbs_api")' }}></div>
-                            <div className="book-shelf-changer">
-                              <select>
-                                <option value="move" disabled>Move to...</option>
-                                <option value="currentlyReading">Currently Reading</option>
-                                <option value="wantToRead">Want to Read</option>
-                                <option value="read">Read</option>
-                                <option value="none">None</option>
-                              </select>
-                            </div>
-                          </div>
-                          <div className="book-title">The Hobbit</div>
-                          <div className="book-authors">J.R.R. Tolkien</div>
-                        </div>
-                      </li>
-                      <li>
-                        <div className="book">
-                          <div className="book-top">
-                            <div className="book-cover" style={{ width: 128, height: 174, backgroundImage: 'url("http://books.google.com/books/content?id=1q_xAwAAQBAJ&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE712CA0cBYP8VKbEcIVEuFJRdX1k30rjLM29Y-dw_qU1urEZ2cQ42La3Jkw6KmzMmXIoLTr50SWTpw6VOGq1leINsnTdLc_S5a5sn9Hao2t5YT7Ax1RqtQDiPNHIyXP46Rrw3aL8&source=gbs_api")' }}></div>
-                            <div className="book-shelf-changer">
-                              <select>
-                                <option value="move" disabled>Move to...</option>
-                                <option value="currentlyReading">Currently Reading</option>
-                                <option value="wantToRead">Want to Read</option>
-                                <option value="read">Read</option>
-                                <option value="none">None</option>
-                              </select>
-                            </div>
-                          </div>
-                          <div className="book-title">Oh, the Places You'll Go!</div>
-                          <div className="book-authors">Seuss</div>
-                        </div>
-                      </li>
-                      <li>
-                        <div className="book">
-                          <div className="book-top">
-                            <div className="book-cover" style={{ width: 128, height: 192, backgroundImage: 'url("http://books.google.com/books/content?id=32haAAAAMAAJ&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE72yckZ5f5bDFVIf7BGPbjA0KYYtlQ__nWB-hI_YZmZ-fScYwFy4O_fWOcPwf-pgv3pPQNJP_sT5J_xOUciD8WaKmevh1rUR-1jk7g1aCD_KeJaOpjVu0cm_11BBIUXdxbFkVMdi&source=gbs_api")' }}></div>
-                            <div className="book-shelf-changer">
-                              <select>
-                                <option value="move" disabled>Move to...</option>
-                                <option value="currentlyReading">Currently Reading</option>
-                                <option value="wantToRead">Want to Read</option>
-                                <option value="read">Read</option>
-                                <option value="none">None</option>
-                              </select>
-                            </div>
-                          </div>
-                          <div className="book-title">The Adventures of Tom Sawyer</div>
-                          <div className="book-authors">Mark Twain</div>
-                        </div>
-                      </li>
+                    {
+                        this.state.read.map((book) =>
+
+                          (<Book key={book.id}
+                            id={book.id}
+                            title={book.title}
+                            author={book.authors}
+                            preview={book.imageLinks}
+                            shelf={book.shelf} />)
+                        )
+                      }
                     </ol>
                   </div>
                 </div>

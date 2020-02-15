@@ -1,22 +1,23 @@
 import React, { useState } from 'react';
 import '../container/App.css';
+import * as BooksAPI from '../BooksAPI';
 
-const Book = ({title, author, preview}) => {
+const Book = ({id, title, author, preview}) => {
     const [selected, setSelected] = useState('');
 
     const handleSelect = (event) => {
         setSelected(event.target.value);
-
+        console.log(event.target.value);
+        BooksAPI.update(id, event.target.value);
     }
-
     
-
     return (
+        
         <li>
             <div className="book">
                 <div className="book-top">
                     {
-                        preview !== undefined ? <div className="book-cover" style={{ width: 128, height: 193, backgroundImage:'url(' + preview.thumbnail +')' }}></div>
+                        preview !== undefined ? <div className="book-cover" style={{ width: 128, height: 193, backgroundImage:'url(' + preview.thumbnail + ')' }}></div>
                         : <div className="book-cover" style={{ width: 128, height: 193, background:"white" }}>
                             <h5 className="no-book-cover">No Book Cover </h5>
                         </div>
