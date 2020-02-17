@@ -2,10 +2,24 @@ import React from 'react';
 import '../container/App.css';
 import * as BooksAPI from '../BooksAPI';
 
-const Book = ({book, title, author, preview, shelf}) => {
+const Book = ({book, books, title, author, preview,reload}) => {
+
 
     const changeShelf = (event) => {
-        BooksAPI.update(book, event.target.value);
+        BooksAPI.update(book, event.target.value)
+            .then((response)=>{
+                reload();
+            });
+        
+    }
+
+    const synchronizeShelfNameOnSearchedBooks = (book)=>{
+        for(let categorizedBook of books){
+            if(categorizedBook.id === book.id){
+                return categorizedBook.shelf;
+            }
+        }
+        return 'none';
     }
     
     return (
@@ -20,7 +34,7 @@ const Book = ({book, title, author, preview, shelf}) => {
                         </div>
                     }
                     <div className="book-shelf-changer">
-                        <select value={shelf} onChange={(event) => changeShelf(event)}>
+                        <select value={book.shelf ? book.shelf : synchronizeShelfNameOnSearchedBooks(book)} onChange={(event) => changeShelf(event)}>
                             <option value="move" disabled>Move to...</option>
                             <option value="currentlyReading">Currently Reading</option>
                             <option value="wantToRead">Want to Read</option>

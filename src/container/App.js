@@ -10,7 +10,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      books: [],
+      books:[],
       read: [],
       currentlyReading: [],
       wantToRead: []
@@ -18,32 +18,38 @@ class App extends Component {
   }
 
   componentDidMount() {
-    BooksAPI.getAll()
-      .then((books) => {
-        console.log(books);
-        this.setState({ books: books });
-        this.filterBooksByShelf(books);
-      })
-
+    this.reload();
   }
 
-
+  reload = ()=>{
+    BooksAPI.getAll()
+      .then((books) => {
+        this.setState({books:[...books]});
+        this.filterBooksByShelf(books);
+      })
+  }
+  
   filterBooksByShelf = (books) => {
+    let currentlyReading =[];
+    let wantToRead =[];
+    let read =[];
     books.forEach((book) => {
       if (book.shelf === "currentlyReading" && !this.state.currentlyReading.includes(book.id)) {
-        this.setState({ currentlyReading: [...this.state.currentlyReading, book] });
+        currentlyReading.push(book);
       }
       else if (book.shelf === "wantToRead" && !this.state.wantToRead.includes(book.id)) {
-        this.setState({ wantToRead: [...this.state.wantToRead, book] });
+        wantToRead.push(book);
       }
       else if (book.shelf === "read" && !this.state.read.includes(book.id)) {
-        this.setState({ read: [...this.state.read, book] });
+        read.push(book);
       }
-
     })
-    console.log(this.state.read);
-    console.log(this.state.currentlyReading);
-    console.log(this.state.wantToRead);
+
+    this.setState({
+      currentlyReading: currentlyReading,
+      wantToRead: wantToRead,
+      read: read
+    });
   }
 
 
@@ -53,7 +59,8 @@ class App extends Component {
       <div className="app">
 
         <Route exact path="/search" render={() =>
-          <SearchBooks books={this.state.books} />
+          <SearchBooks books={this.state.books}
+                      reload = {this.reload}/>
         } />
 
         <Route exact path="/" render={() => (
@@ -72,11 +79,13 @@ class App extends Component {
 
                           (<Book key={book.id}
                             book={book}
+                            books = {this.state.books}
                             id={book.id}
                             title={book.title}
                             author={book.authors}
                             preview={book.imageLinks}
-                            shelf={book.shelf} />)
+                            reload = {this.reload}
+                             />)
                         )
                       }
                     </ol>
@@ -91,11 +100,13 @@ class App extends Component {
 
                           (<Book key={book.id}
                             book={book}
+                            books = {this.state.books}
                             id={book.id}
                             title={book.title}
                             author={book.authors}
                             preview={book.imageLinks}
-                            shelf={book.shelf} />)
+                            reload = {this.reload}
+                           />)
                         )
                       }
                     </ol>
@@ -110,11 +121,13 @@ class App extends Component {
 
                           (<Book key={book.id}
                             book={book}
+                            books = {this.state.books}
                             id={book.id}
                             title={book.title}
                             author={book.authors}
                             preview={book.imageLinks}
-                            shelf={book.shelf} />)
+                            reload = {this.reload}
+                           />)
                         )
                       }
                     </ol>

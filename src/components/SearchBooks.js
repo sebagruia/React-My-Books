@@ -6,8 +6,8 @@ import '../container/App.css';
 
 class SearchBooks extends Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             query: '',
             searchedBooks: []
@@ -37,7 +37,6 @@ class SearchBooks extends Component {
         }
     }
 
-
     render() {
 
         return (
@@ -64,10 +63,13 @@ class SearchBooks extends Component {
                                 : this.state.searchedBooks.map((book) =>
                                     <Book key={book.id}
                                         book={book}
+                                        books={this.props.books}
                                         id={book.id}
                                         title={book.title}
                                         author={book.authors}
-                                        preview={book.imageLinks} />
+                                        preview={book.imageLinks}
+                                        reload = {this.props.reload}
+                                         />
                                 )
                         }
                     </ol>
@@ -75,10 +77,6 @@ class SearchBooks extends Component {
             </div>
         );
     }
-
-
 }
-
-
 
 export default SearchBooks;
