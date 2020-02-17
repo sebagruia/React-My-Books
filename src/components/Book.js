@@ -5,6 +5,7 @@ import * as BooksAPI from '../BooksAPI';
 const Book = ({book, books, title, author, preview,reload}) => {
 
 
+
     const changeShelf = (event) => {
         BooksAPI.update(book, event.target.value)
             .then((response)=>{
@@ -23,10 +24,12 @@ const Book = ({book, books, title, author, preview,reload}) => {
     }
     
     return (
-        
         <li>
             <div className="book">
                 <div className="book-top">
+                    <div class="shelf-name">
+                    <h4>{synchronizeShelfNameOnSearchedBooks(book) === "none" ? "Not in Library" : synchronizeShelfNameOnSearchedBooks(book) }</h4>
+                    </div>
                     {
                         preview !== undefined ? <div className="book-cover" style={{ width: 128, height: 193, backgroundImage:'url(' + preview.thumbnail + ')' }}></div>
                         : <div className="book-cover" style={{ width: 128, height: 193, background:"white" }}>
@@ -47,7 +50,6 @@ const Book = ({book, books, title, author, preview,reload}) => {
                 <div className="book-authors">{author}</div>
             </div>
         </li>
-
     );
 }
 
