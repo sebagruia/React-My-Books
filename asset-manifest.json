@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/sebagruia/React-My-Books/static/css/main.01870e09.chunk.css",
+    "main.js": "/sebagruia/React-My-Books/static/js/main.e44a501f.chunk.js",
+    "main.js.map": "/sebagruia/React-My-Books/static/js/main.e44a501f.chunk.js.map",
+    "runtime-main.js": "/sebagruia/React-My-Books/static/js/runtime-main.b78e46b1.js",
+    "runtime-main.js.map": "/sebagruia/React-My-Books/static/js/runtime-main.b78e46b1.js.map",
+    "static/js/2.631b3511.chunk.js": "/sebagruia/React-My-Books/static/js/2.631b3511.chunk.js",
+    "static/js/2.631b3511.chunk.js.map": "/sebagruia/React-My-Books/static/js/2.631b3511.chunk.js.map",
+    "index.html": "/sebagruia/React-My-Books/index.html",
+    "precache-manifest.9a8571a9f35d1478c01f2747ecebf781.js": "/sebagruia/React-My-Books/precache-manifest.9a8571a9f35d1478c01f2747ecebf781.js",
+    "service-worker.js": "/sebagruia/React-My-Books/service-worker.js",
+    "static/css/main.01870e09.chunk.css.map": "/sebagruia/React-My-Books/static/css/main.01870e09.chunk.css.map",
+    "static/js/2.631b3511.chunk.js.LICENSE.txt": "/sebagruia/React-My-Books/static/js/2.631b3511.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/sebagruia/React-My-Books/static/media/arrow-drop-down.78c6f53b.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b78e46b1.js",
+    "static/js/2.631b3511.chunk.js",
+    "static/css/main.01870e09.chunk.css",
+    "static/js/main.e44a501f.chunk.js"
+  ]
+}
