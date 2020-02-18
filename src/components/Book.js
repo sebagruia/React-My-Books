@@ -4,14 +4,11 @@ import * as BooksAPI from '../BooksAPI';
 
 const Book = ({book, books, title, author, preview,reload}) => {
 
-
-
     const changeShelf = (event) => {
         BooksAPI.update(book, event.target.value)
             .then((response)=>{
                 reload();
             });
-        
     }
 
     const synchronizeShelfNameOnSearchedBooks = (book)=>{

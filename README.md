@@ -4,10 +4,10 @@
 # My Books
 
 A React App that lets you organize your books.
+ [Link to the App](https://facebook.github.io/create-react-app/docs/deployment).
 
 
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React App](https://sebagruia.github.io/React-My-Books/).
 
 ## Available Scripts
 
