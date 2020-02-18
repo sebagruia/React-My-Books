@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "073c0353155e7b3ec32d4da084f7d414",
+    "revision": "fd90ac78fee86d262ca9896a622cc12a",
     "url": "/React-My-Books/index.html"
   },
   {
-    "revision": "03230372f19d43c920d7",
+    "revision": "8337ba6d1fa1e7014731",
     "url": "/React-My-Books/static/css/main.1416e9e2.chunk.css"
   },
   {
-    "revision": "3b8a75361d82d398e88f",
-    "url": "/React-My-Books/static/js/2.631b3511.chunk.js"
+    "revision": "5aa12c0edd84686b3d1d",
+    "url": "/React-My-Books/static/js/2.992ef9f3.chunk.js"
   },
   {
     "revision": "928d7b5eb39d16fe9a880722c974b51e",
-    "url": "/React-My-Books/static/js/2.631b3511.chunk.js.LICENSE.txt"
+    "url": "/React-My-Books/static/js/2.992ef9f3.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "03230372f19d43c920d7",
-    "url": "/React-My-Books/static/js/main.ce5d2aca.chunk.js"
+    "revision": "8337ba6d1fa1e7014731",
+    "url": "/React-My-Books/static/js/main.202fcf71.chunk.js"
   },
   {
     "revision": "dd597cb32d3ed8e02c7b",

@@ -1,23 +1,23 @@
 {
   "files": {
     "main.css": "/React-My-Books/static/css/main.1416e9e2.chunk.css",
-    "main.js": "/React-My-Books/static/js/main.ce5d2aca.chunk.js",
-    "main.js.map": "/React-My-Books/static/js/main.ce5d2aca.chunk.js.map",
+    "main.js": "/React-My-Books/static/js/main.202fcf71.chunk.js",
+    "main.js.map": "/React-My-Books/static/js/main.202fcf71.chunk.js.map",
     "runtime-main.js": "/React-My-Books/static/js/runtime-main.369bd1c8.js",
     "runtime-main.js.map": "/React-My-Books/static/js/runtime-main.369bd1c8.js.map",
-    "static/js/2.631b3511.chunk.js": "/React-My-Books/static/js/2.631b3511.chunk.js",
-    "static/js/2.631b3511.chunk.js.map": "/React-My-Books/static/js/2.631b3511.chunk.js.map",
+    "static/js/2.992ef9f3.chunk.js": "/React-My-Books/static/js/2.992ef9f3.chunk.js",
+    "static/js/2.992ef9f3.chunk.js.map": "/React-My-Books/static/js/2.992ef9f3.chunk.js.map",
     "index.html": "/React-My-Books/index.html",
-    "precache-manifest.ef8309f63bbe2a34a54860f3ddd1e850.js": "/React-My-Books/precache-manifest.ef8309f63bbe2a34a54860f3ddd1e850.js",
+    "precache-manifest.85ba2ced57b237affde689a5a42f2406.js": "/React-My-Books/precache-manifest.85ba2ced57b237affde689a5a42f2406.js",
     "service-worker.js": "/React-My-Books/service-worker.js",
     "static/css/main.1416e9e2.chunk.css.map": "/React-My-Books/static/css/main.1416e9e2.chunk.css.map",
-    "static/js/2.631b3511.chunk.js.LICENSE.txt": "/React-My-Books/static/js/2.631b3511.chunk.js.LICENSE.txt",
+    "static/js/2.992ef9f3.chunk.js.LICENSE.txt": "/React-My-Books/static/js/2.992ef9f3.chunk.js.LICENSE.txt",
     "static/media/App.css": "/React-My-Books/static/media/arrow-drop-down.78c6f53b.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.369bd1c8.js",
-    "static/js/2.631b3511.chunk.js",
+    "static/js/2.992ef9f3.chunk.js",
     "static/css/main.1416e9e2.chunk.css",
-    "static/js/main.ce5d2aca.chunk.js"
+    "static/js/main.202fcf71.chunk.js"
   ]
 }
