@@ -3,14 +3,14 @@ import BookShelfBooks from "../components/BookShelfBooks";
 
 const BookShelf = ({ read, currentlyReading, wantToRead, reload }) => {
   const redingStates = [
-    { title: "Currently Reading", books: currentlyReading },
-    { title: "Want to Read", books: wantToRead },
-    { title: "Read", books: read },
+    { id:1, title: "Currently Reading", books: currentlyReading },
+    { id:2, title: "Want to Read", books: wantToRead },
+    { id:3, title: "Read", books: read },
   ];
   return (
     <div className="bookshelf">
       {redingStates.map((readingState) => (
-        <Fragment>
+        <Fragment key={readingState.id}>
           <h2 className="bookshelf-title">{readingState.title}</h2>
           <BookShelfBooks books={readingState.books} reload={reload} />
         </Fragment>

@@ -8,7 +8,6 @@ const Book = ({ book, books, title, author, preview, reload }) => {
       reload();
     });
   };
-
   const synchronizeShelfNameOnSearchedBooks = (book) => {
     for (let categorizedBook of books) {
       if (categorizedBook.id === book.id) {
