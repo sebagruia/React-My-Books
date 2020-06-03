@@ -1,6 +1,4 @@
 
-# CURRENTLY UNDER DEVELOPMENT
-
 # My Books
 
 A React App that lets you organize your books.
